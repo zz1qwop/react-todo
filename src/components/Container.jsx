@@ -10,7 +10,11 @@ export default function Container() {
   function addData({ checked, title }) {
     setData((data) => [...data, { checked, title }]);
   }
-  function deleteData() {}
+  function deleteData(e) {
+    setData((data) =>
+      data.filter((todo) => todo.title !== e.target.dataset.title)
+    );
+  }
   function handleCategory(newCategory) {
     setCategory(newCategory);
   }
