@@ -9,10 +9,17 @@
   align-items: center;
   padding: 0 1rem;
 }
-
-.category button {
+.category {
+  display: flex;
+  flex-direction: row;
+}
+.category div {
   background-color: transparent;
-  border: none;
   font-size: 1.25rem;
+  margin-left: 0.7rem;
   color: white;
+}
+
+.selected {
+  border-bottom: 2px solid white;
 }
