@@ -2,23 +2,24 @@ import React from 'react';
 import { BsFillTrashFill } from 'react-icons/bs';
 import styles from './Todolist.module.css';
 
-export default function Todolist() {
+export default function Todolist({ data, handleData }) {
   return (
     <ul className={styles.container}>
-      <div className={styles.list_item}>
-        <div className={styles.list_title}>
-          <input type="checkbox" className={styles.checkbox}></input>
-          <li className={styles.title}>first list</li>
+      {data.map((todo, index) => (
+        <div className={styles.list_item}>
+          <div className={styles.list_title}>
+            <input
+              type="checkbox"
+              className={styles.checkbox}
+              checked={todo.checked}
+            ></input>
+            <li className={styles.title} key={index}>
+              {todo.title}
+            </li>
+          </div>
+          <BsFillTrashFill className={styles.delete} size="20" color="white" />
         </div>
-        <BsFillTrashFill className={styles.delete} size="20" color="white" />
-      </div>
-      <div className={styles.list_item}>
-        <div className={styles.list_title}>
-          <input type="checkbox" className={styles.checkbox}></input>
-          <li className={styles.title}>first list</li>
-        </div>
-        <BsFillTrashFill className={styles.delete} size="20" color="white" />
-      </div>
+      ))}
     </ul>
   );
 }
