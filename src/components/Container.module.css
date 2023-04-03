@@ -13,3 +13,6 @@
   -webkit-box-shadow: 0px 11px 22px 0px rgba(144, 158, 190, 0.74);
   -moz-box-shadow: 0px 11px 22px 0px rgba(144, 158, 190, 0.74);
 }
+.container.dark {
+  background-color: #2c3339;
+}

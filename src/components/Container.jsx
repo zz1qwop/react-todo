@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Add from './Add';
 import Header from './Header';
 import Todolist from './Todolist';
 import styles from './Container.module.css';
+import { DarkModeContext } from '../context/DarkModeContext';
 
 export default function Container() {
+  const { darkMode } = useContext(DarkModeContext);
+
   const [data, setData] = useState([]);
   const [category, setCategory] = useState('All');
   function addData({ checked, title }) {
     setData((data) => [...data, { checked, title }]);
   }
   function deleteData(e) {
-    setData((data) =>
-      data.filter((todo) => todo.title !== e.target.dataset.title)
-    );
-    console.log(e.target);
+    if (e.target.nodeName === 'path') {
+      setData((data) =>
+        data.filter((todo) => todo.title !== e.target.parentNode.dataset.title)
+      );
+    } else {
+      setData((data) =>
+        data.filter((todo) => todo.title !== e.target.dataset.title)
+      );
+    }
   }
   function checkData(e) {
     setData((data) =>
@@ -31,7 +39,7 @@ export default function Container() {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${darkMode ? styles.dark : ''}`}>
       <Header category={category} handleCategory={handleCategory}></Header>
       <Todolist
         data={data}

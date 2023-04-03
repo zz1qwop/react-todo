@@ -27,12 +27,21 @@ li {
 .checkbox:checked {
   accent-color: #7a99ba;
 }
+.checkbox.dark {
+  accent-color: #7c7aa1;
+}
 .title {
   font-size: 1.5rem;
   margin-left: 0.5rem;
+}
+.title.dark {
+  color: white;
 }
 .delete {
   background-color: #b8c9da;
   border-radius: 50%;
   padding: 0.5rem;
+}
+.delete.dark {
+  background-color: #9f9ec5;
 }

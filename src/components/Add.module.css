@@ -6,6 +6,9 @@
   height: 5rem;
   background-color: #99b0c8;
 }
+.container.dark {
+  background-color: #242a30;
+}
 
 .new {
   border: 2px solid #7a99ba;
@@ -16,6 +19,9 @@
 }
 .new:focus {
   outline: none;
+}
+.new.dark {
+  border: 2px solid #9f9ec5;
 }
 
 .addBtn {
@@ -28,4 +34,8 @@
   font-size: 1rem;
   background-color: #7a99ba;
   color: #ffffff;
+}
+.addBtn.dark {
+  background-color: #9f9ec5;
+  border: 2px solid #9f9ec5;
 }

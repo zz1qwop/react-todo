@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './Add.module.css';
+import { DarkModeContext } from '../context/DarkModeContext';
 
 export default function Add({ data, handleData }) {
+  const { darkMode } = useContext(DarkModeContext);
+
   const [newItem, setNewItem] = useState('');
   const handleChange = (e) => {
     setNewItem(e.target.value);
@@ -11,15 +14,18 @@ export default function Add({ data, handleData }) {
     setNewItem('');
   };
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${darkMode ? styles.dark : ''}`}>
       <input
         type="text"
-        className={styles.new}
+        className={`${styles.new} ${darkMode ? styles.dark : ''}`}
         placeholder="Add Todo"
         value={newItem}
         onChange={handleChange}
       />
-      <button className={styles.addBtn} onClick={handleAdd}>
+      <button
+        className={`${styles.addBtn} ${darkMode ? styles.dark : ''}`}
+        onClick={handleAdd}
+      >
         Add
       </button>
     </div>

@@ -9,6 +9,9 @@
   align-items: center;
   padding: 0 1rem;
 }
+.dark {
+  background-color: #242a30;
+}
 .category {
   display: flex;
   flex-direction: row;

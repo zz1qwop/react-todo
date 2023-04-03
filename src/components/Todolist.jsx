@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BsFillTrashFill } from 'react-icons/bs';
 import styles from './Todolist.module.css';
+import { DarkModeContext } from '../context/DarkModeContext';
 
 export default function Todolist({ data, handleData, checkData, category }) {
+  const { darkMode } = useContext(DarkModeContext);
   let filterdData;
   if (category === 'Active') {
     filterdData = data.filter((todo) => !todo.checked);
@@ -19,15 +21,17 @@ export default function Todolist({ data, handleData, checkData, category }) {
             <div className={styles.list_title}>
               <input
                 type="checkbox"
-                className={styles.checkbox}
+                className={`${styles.checkbox} ${darkMode ? styles.dark : ''}`}
                 checked={todo.checked}
                 onChange={checkData}
                 data-title={todo.title}
               ></input>
-              <li className={styles.title}>{todo.title}</li>
+              <li className={`${styles.title} ${darkMode ? styles.dark : ''}`}>
+                {todo.title}
+              </li>
             </div>
             <BsFillTrashFill
-              className={styles.delete}
+              className={`${styles.delete} ${darkMode ? styles.dark : ''}`}
               data-title={todo.title}
               size="20"
               color="white"
