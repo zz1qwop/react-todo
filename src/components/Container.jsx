@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Add from './Add';
 import Header from './Header';
 import Todolist from './Todolist';
@@ -8,8 +8,13 @@ import { DarkModeContext } from '../context/DarkModeContext';
 export default function Container() {
   const { darkMode } = useContext(DarkModeContext);
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(() => localData());
   const [category, setCategory] = useState('All');
+
+  useEffect(() => {
+    localStorage.setItem('todo', JSON.stringify(data));
+  }, [data]);
+
   function addData({ checked, title }) {
     setData((data) => [...data, { checked, title }]);
   }
@@ -50,4 +55,9 @@ export default function Container() {
       <Add data={data} handleData={addData}></Add>
     </div>
   );
+}
+
+function localData() {
+  const data = JSON.parse(localStorage.getItem('todo'));
+  return data ? data : [];
 }
