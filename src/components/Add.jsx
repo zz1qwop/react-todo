@@ -9,25 +9,28 @@ export default function Add({ data, handleData }) {
   const handleChange = (e) => {
     setNewItem(e.target.value);
   };
-  const handleAdd = () => {
-    handleData({ checked: false, title: newItem });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (newItem.trim() === '') {
+      return;
+    }
+    handleData({ checked: false, title: newItem.trim() });
     setNewItem('');
   };
   return (
     <div className={`${styles.container} ${darkMode ? styles.dark : ''}`}>
-      <input
-        type="text"
-        className={`${styles.new} ${darkMode ? styles.dark : ''}`}
-        placeholder="Add Todo"
-        value={newItem}
-        onChange={handleChange}
-      />
-      <button
-        className={`${styles.addBtn} ${darkMode ? styles.dark : ''}`}
-        onClick={handleAdd}
-      >
-        Add
-      </button>
+      <form action="submit" className={styles.form} onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className={`${styles.new} ${darkMode ? styles.dark : ''}`}
+          placeholder="Add Todo"
+          value={newItem}
+          onChange={handleChange}
+        />
+        <button className={`${styles.addBtn} ${darkMode ? styles.dark : ''}`}>
+          Add
+        </button>
+      </form>
     </div>
   );
 }

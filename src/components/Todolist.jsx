@@ -30,13 +30,19 @@ export default function Todolist({ data, handleData, checkData, category }) {
                 {todo.title}
               </li>
             </div>
-            <BsFillTrashFill
-              className={`${styles.delete} ${darkMode ? styles.dark : ''}`}
-              data-title={todo.title}
-              size="20"
-              color="white"
-              onClick={handleData}
-            />
+            <span
+              className={`${styles.delete_cover} ${
+                darkMode ? styles.dark : ''
+              }`}
+            >
+              <BsFillTrashFill
+                className={styles.delete}
+                data-title={todo.title}
+                size="20"
+                color="white"
+                onClick={handleData}
+              />
+            </span>
           </div>
         );
       })}

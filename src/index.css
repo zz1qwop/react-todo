@@ -1,3 +1,13 @@
+:root {
+  --color-back: #fcfeff;
+  --color-back-dark: #2c3339;
+  --color-bar: #99b0c8;
+  --color-bar-dark: #242a30;
+  --color-btn: #7a99ba;
+  --color-btn-dark: #9f9ec5;
+  --color-white: white;
+}
+
 html {
   height: 100%;
 }
@@ -19,4 +29,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+* {
+  box-sizing: border-box;
 }

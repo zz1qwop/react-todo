@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BsSunFill } from 'react-icons/bs';
+import { BsSunFill, BsMoonFill } from 'react-icons/bs';
 import styles from './Header.module.css';
 import { DarkModeContext } from '../context/DarkModeContext';
 
@@ -8,12 +8,23 @@ export default function Header({ category, handleCategory }) {
 
   return (
     <div className={`${styles.nav} ${darkMode ? styles.dark : ''}`}>
-      <BsSunFill
-        className={styles.darkmode}
-        size="25"
-        color="white"
-        onClick={() => toggleDarkMode()}
-      />
+      {!darkMode && (
+        <BsMoonFill
+          className={`${styles.darkmode} ${styles.icon}`}
+          size="25"
+          color="white"
+          onClick={() => toggleDarkMode()}
+        />
+      )}
+      {darkMode && (
+        <BsSunFill
+          className={`${styles.darkmode} ${styles.icon}`}
+          size="25"
+          color="white"
+          onClick={() => toggleDarkMode()}
+        />
+      )}
+
       <div className={styles.category}>
         <div
           className={category === 'All' ? styles.selected : ''}
